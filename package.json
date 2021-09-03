@@ -1,0 +1,7 @@
+{
+  "name": "master",
+  "version": "0.1.0",
+  "scripts": {
+    "start": "cd virgo-micro-app yarn start"
+  }
+}

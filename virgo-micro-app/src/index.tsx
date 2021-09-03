@@ -3,13 +3,27 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import {registerMicroApps, start} from 'qiankun'
 
 ReactDOM.render(
   <React.StrictMode>
     <App />
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById('root-virgo-micro-app')
 );
+
+registerMicroApps(
+  [
+    {
+      name: 'client',
+      entry: 'http://localhost:3001',
+      container: '#client',
+      activeRule: '/client'
+    }
+  ]
+)
+
+start()
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
