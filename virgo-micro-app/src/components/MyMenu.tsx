@@ -1,7 +1,8 @@
 import React, { FC, ReactElement } from 'react'
 import { Menu } from 'antd'
 import { MailOutlined } from '@ant-design/icons'
-
+import myRouters from '@/router.config'
+console.log(myRouters)
 const { SubMenu } = Menu;
 
 const MyMenu: FC = (): ReactElement => {

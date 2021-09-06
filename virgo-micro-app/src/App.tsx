@@ -1,7 +1,6 @@
 import React, { FC, ReactElement } from 'react';
 import {Router, BrowserRouter, Route} from 'react-router-dom';
 import './App.css';
-import myRouters from './router.config'
 import { Layout } from 'antd'
 import {
   SiderProps
@@ -23,7 +22,7 @@ function App() {
   return (
     <div className="App">
        <Layout>
-        <Header theme="light">Header</Header>
+        <Header>Header</Header>
         <Layout>
           <Sider {...SiderConfig }>
             <MyMenu />

@@ -16,7 +16,6 @@ const sockPort = process.env.WDS_SOCKET_PORT;
 
 module.exports = function (proxy, allowedHost) {
   return {
-    port: 3001,
     headers: {
       "Access-Control-Allow-Origin": "*",
     },
