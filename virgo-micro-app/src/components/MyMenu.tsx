@@ -1,16 +1,37 @@
-import React, { FC, ReactElement } from 'react'
+import React, { FC, ReactElement, useEffect, useState } from 'react'
 import { Menu } from 'antd'
-import { MailOutlined } from '@ant-design/icons'
 import myRouters from '@/router.config'
-console.log(myRouters)
+import {IRouter} from '@/typing'
+
 const { SubMenu } = Menu;
 
 const MyMenu: FC = (): ReactElement => {
+  const [menuTreeNode, setMenuTreeNode] = useState<Array<ReactElement>>([])
 
   // todo  重新定义any
   const handleClick = (e: any) => {
     console.log('click ', e);
   };
+
+  useEffect(() => {
+    console.log(renderMenu(myRouters))
+    setMenuTreeNode(renderMenu(myRouters))
+    return () => {}
+  }, [])
+
+  const renderMenu = (data: IRouter): Array<ReactElement> => {
+    return data.map(v => {
+      if (v.children) {
+        return (
+          <SubMenu key={v.name} icon={v.icon} title={v.title}>
+            {renderMenu(v.children)}
+          </SubMenu>
+        )
+      } else {
+        return <Menu.Item key={v.name}>{v.title}</Menu.Item>
+      }
+    })
+  }
 
   return (
     <Menu
@@ -20,16 +41,7 @@ const MyMenu: FC = (): ReactElement => {
       defaultOpenKeys={['sub1']}
       mode="inline"
     >
-      <SubMenu key="sub1" icon={<MailOutlined />} title="Navigation One">
-        <Menu.ItemGroup key="g1" title="Item 1">
-          <Menu.Item key="1">Option 1</Menu.Item>
-          <Menu.Item key="2">Option 2</Menu.Item>
-        </Menu.ItemGroup>
-        <Menu.ItemGroup key="g2" title="Item 2">
-          <Menu.Item key="3">Option 3</Menu.Item>
-          <Menu.Item key="4">Option 4</Menu.Item>
-        </Menu.ItemGroup>
-      </SubMenu>
+      {menuTreeNode}
     </Menu>
   );
 }
