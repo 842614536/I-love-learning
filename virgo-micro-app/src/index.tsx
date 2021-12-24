@@ -19,6 +19,12 @@ registerMicroApps(
       entry: 'http://localhost:3001',
       container: '#client',
       activeRule: '/client'
+    },
+    {
+      name: "operate",
+      entry: "http://localhost:3002",
+      container: "#operate",
+      activeRule: "/operate",
     }
   ]
 )

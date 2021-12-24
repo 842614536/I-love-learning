@@ -1,4 +1,5 @@
 import React, { FC, ReactElement, useEffect, useState } from 'react'
+import {Link} from 'react-router-dom';
 import { Menu } from 'antd'
 import myRouters from '@/router.config'
 import {IRouter} from '@/typing'
@@ -14,21 +15,27 @@ const MyMenu: FC = (): ReactElement => {
   };
 
   useEffect(() => {
-    console.log(renderMenu(myRouters))
     setMenuTreeNode(renderMenu(myRouters))
     return () => {}
   }, [])
 
   const renderMenu = (data: IRouter): Array<ReactElement> => {
     return data.map(v => {
-      if (v.children) {
+      console.log(v.icon)
+      if (v.children) { 
         return (
-          <SubMenu key={v.name} icon={v.icon} title={v.title}>
+          <SubMenu key={v.name} title={v.title}>
             {renderMenu(v.children)}
           </SubMenu>
         )
       } else {
-        return <Menu.Item key={v.name}>{v.title}</Menu.Item>
+        return (
+          <div key={v.name}>
+            <Link to={v.link}>
+              <Menu.Item>{v.title}</Menu.Item>
+            </Link>
+          </div>
+        )
       }
     })
   }
@@ -41,7 +48,7 @@ const MyMenu: FC = (): ReactElement => {
       defaultOpenKeys={['sub1']}
       mode="inline"
     >
-      {menuTreeNode}
+      {menuTreeNode.length ? menuTreeNode : null}
     </Menu>
   );
 }

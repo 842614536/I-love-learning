@@ -3,7 +3,7 @@ import {
 } from '@/typing'
 import { MailOutlined } from '@ant-design/icons'
 
-const OPERATE_BASIC_URL = '/config'
+const OPERATE_BASIC_URL = '/operate'
 const CLIENT_BASIC_URL = '/client'
 
 const routers: IRouter = [
