@@ -20,8 +20,7 @@ const MyMenu: FC = (): ReactElement => {
   }, [])
 
   const renderMenu = (data: IRouter): Array<ReactElement> => {
-    return data.map(v => {
-      console.log(v.icon)
+    return data.map((v, i) => {
       if (v.children) { 
         return (
           <SubMenu key={v.name} title={v.title}>
@@ -30,11 +29,9 @@ const MyMenu: FC = (): ReactElement => {
         )
       } else {
         return (
-          <div key={v.name}>
-            <Link to={v.link}>
-              <Menu.Item>{v.title}</Menu.Item>
-            </Link>
-          </div>
+          <Link key={i} to={v.link}>
+            <Menu.Item key={v.name}>{v.title}</Menu.Item>
+          </Link>
         )
       }
     })
@@ -44,9 +41,8 @@ const MyMenu: FC = (): ReactElement => {
     <Menu
       onClick={handleClick}
       style={{ width: 256 }}
-      defaultSelectedKeys={['1']}
-      defaultOpenKeys={['sub1']}
       mode="inline"
+      key="root"
     >
       {menuTreeNode.length ? menuTreeNode : null}
     </Menu>

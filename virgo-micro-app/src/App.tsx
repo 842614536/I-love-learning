@@ -4,7 +4,7 @@ import "./App.css";
 import { Layout } from "antd";
 import { SiderProps } from "antd/lib/layout";
 import MyMenu from "./components/MyMenu";
-
+import io from 'socket.io-client'
 const { Header, Sider, Content } = Layout;
 
 const ClientContainer: FC = (): ReactElement => <div id="client"></div>
@@ -16,6 +16,27 @@ const SiderConfig: SiderProps = {
 };
 
 function App() {
+  const socket = io('http://localhost:8042', {'transports': ['websocket']})
+  console.log('-------')
+  socket.on('connect', () => {
+    socket.send('什么鬼')
+    socket.emit('getNewData', '我佛了')
+    socket.on('message', (data: any) => {
+      console.log(data)
+    })
+    socket.close();
+    
+  })
+
+  
+
+  // console.log(socket)
+  // console.log(socket.emit)
+  // socket.emit('getNewData', '我佛了')
+  // socket.subscribe('getNewData', '我佛了')
+  // socket.on('message', (data: any) => {
+  //   console.log(data)
+  // })
   return (
     <div className="App">
       <Layout>
