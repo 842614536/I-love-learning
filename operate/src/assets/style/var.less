@@ -1,0 +1,107 @@
+/******** 颜色定义 *********/
+@blue: #2a6bfd;
+@white: #fff;
+@red: #e92b2b;
+@2c2c2c: #2c2c2c;
+@7d7d7d: #7d7d7d;
+@666: #666;
+@yellow: #ff9900;
+@black: #000;
+@requiredRed: #fa5050;
+@orange : #FF7018;
+
+/******** 长度定义 *********/
+@200: 200px;
+@130: 130px;
+@40: 40px;
+@20: 20px;
+@16: 16px;
+@12: 12px;
+@10: 10px;
+
+/******** 按钮/输入框/下拉框 宽度 *********/
+@48: 48px;
+@108: 108px;
+@160: 160px;
+@350: 350px;
+@282: 282px;
+@145: 145px;
+@165: 165px;
+
+
+/******** 按钮/输入框 高度 *********/
+@30: 30px;
+@36: 36px;
+@44: 44px;
+
+/********* 颜色 *********/
+// 主色
+@blue     : #2a6bfd;
+@gray-73  : #737373;
+@gray-C9  : #C9C9C9;
+@gray-E5  : #E5E5E5;
+@gray-75  :#586175;
+@black    : #000000;
+@black-44 : #444444;
+@white    : #FFFFFF;
+
+// 辅助色
+@red      : #E60012;
+@yellow   : #FFF100;
+@green    : #8FC31F;
+
+/********* 字体 *********/
+@font-size-base           : 14px;
+@font-size-small          : 12px;
+@font-size-main-title     : @font-size-base + 8px;
+@font-size-section-title  : @font-size-base + 8px;
+@font-size-table-title    : @font-size-base + 1px;
+
+
+/********* 屏幕宽度 *********/
+@screen-width:   1440px;
+@mini: ~'(max-width: 1479px)';
+@micro: ~'(max-width: 1200px)';
+
+/********* 圆角定义函数 *************/
+.border-radius(@radius: 5px){
+  border-radius: @radius;
+  -o-border-radius: @radius;
+  -ms-border-radius: @radius;
+  -moz-border-radius: @radius;
+  -webkit-border-radius: @radius;
+}
+
+.font-size(@fontsize: 12px){
+  font-size: @fontsize !important;
+}
+
+/********* 外边距 *********/
+.margin-side(@side, @range) {
+  margin-@{side}: @range;
+}
+
+/********* 内边距 *********/
+.padding-side(@side, @range) {
+  padding-@{side}: @range;
+}
+
+/********* 宽高 *********/
+.height(@height) {
+  height: @height;
+}
+
+.width(@width) {
+  width: @width;
+}
+
+
+/* 页面中块与块之间的间距 */
+@gap: 20px;
+
+@page-width: 1480px;
+@page-mini-width: 1200px;
+@page-bg: #f9f9f9;
+
+@mini: ~'(max-width: 1479px)';
+@micro: ~'(max-width: 1200px)';

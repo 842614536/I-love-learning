@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "license": "ISC",
   "scripts": {
-    "start": "cd virgo-micro-app yarn start"
+    "start": "concurrently \"npm run client\" \"npm run operate\" \"npm run micro\" \"npm run service\"",
+    "client": "cd client && npm start",
+    "operate": "cd operate && npm start",
+    "micro": "cd virgo-micro-app && npm start",
+    "service": "cd service && npm run start:dev"
   }
 }

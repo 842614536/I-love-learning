@@ -1,5 +1,5 @@
 import React, { FC, ReactElement, useEffect, useState } from 'react'
-import {Link} from 'react-router-dom';
+import {useHistory} from 'react-router-dom'
 import { Menu } from 'antd'
 import myRouters from '@/router.config'
 import {IRouter} from '@/typing'
@@ -9,14 +9,14 @@ const { SubMenu } = Menu;
 const MyMenu: FC = (): ReactElement => {
   const [menuTreeNode, setMenuTreeNode] = useState<Array<ReactElement>>([])
 
-  // todo  重新定义any
+  const history = useHistory()
   const handleClick = (e: any) => {
+    history.push(e.key)
     console.log('click ', e);
   };
 
-  useEffect(() => {
+  useEffect(() :void => {
     setMenuTreeNode(renderMenu(myRouters))
-    return () => {}
   }, [])
 
   const renderMenu = (data: IRouter): Array<ReactElement> => {
@@ -29,9 +29,7 @@ const MyMenu: FC = (): ReactElement => {
         )
       } else {
         return (
-          <Link key={i} to={v.link}>
-            <Menu.Item key={v.name}>{v.title}</Menu.Item>
-          </Link>
+          <Menu.Item key={v.link}>{v.title}</Menu.Item>
         )
       }
     })

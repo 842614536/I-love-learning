@@ -1,5 +1,5 @@
 import React, { FC, ReactElement } from "react";
-import { Router, BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter, Route } from "react-router-dom";
 import "./App.css";
 import { Layout } from "antd";
 import { SiderProps } from "antd/lib/layout";
@@ -16,17 +16,17 @@ const SiderConfig: SiderProps = {
 };
 
 function App() {
-  const socket = io('http://localhost:8042', {'transports': ['websocket']})
-  console.log('-------')
-  socket.on('connect', () => {
-    socket.send('什么鬼')
-    socket.emit('getNewData', '我佛了')
-    socket.on('message', (data: any) => {
-      console.log(data)
-    })
-    socket.close();
+  // const socket = io('http://localhost:8042', {'transports': ['websocket']})
+  // console.log('-------')
+  // socket.on('connect', () => {
+  //   socket.send('什么鬼')
+  //   socket.emit('getNewData', '我佛了')
+  //   socket.on('message', (data: any) => {
+  //     console.log(data)
+  //   })
+  //   socket.close();
     
-  })
+  // })
 
   
 

@@ -1,11 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './assets/style/reset.less'
+import './assets/style/index.less'
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {registerMicroApps, start} from 'qiankun'
+// declare global {
+//   interface Window {
+//     __REACT_ERROR_OVERLAY_GLOBAL_HOOK__: object;
+//   }
+// }
 
+// window.__REACT_ERROR_OVERLAY_GLOBAL_HOOK__ = {}
 ReactDOM.render(
   <React.StrictMode>
     <App />
@@ -17,13 +24,13 @@ registerMicroApps(
   [
     {
       name: 'client',
-      entry: 'http://localhost:3001',
+      entry: 'http://lpf.com:3001',
       container: '#client',
       activeRule: '/client'
     },
     {
       name: "operate",
-      entry: "http://localhost:3002",
+      entry: "http://lpf.com:3002",
       container: "#operate",
       activeRule: "/operate",
     }

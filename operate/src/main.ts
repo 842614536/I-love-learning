@@ -2,16 +2,29 @@ import { createApp } from "vue";
 import App from "./App.vue";
 import router from "./router";
 import store from "./store";
+import Antd from 'ant-design-vue';
+import 'ant-design-vue/dist/antd.css';
+import './assets/style/index.less'
 
-const temp: any = window;
-const isQianKun = temp.___POWERED_BY_QIANKUN_;
-
+// todo 提取合并
+declare global {
+  interface Window {
+    __POWERED_BY_QIANKUN__: boolean;
+  }
+}
+const isQianKun = window.__POWERED_BY_QIANKUN__
+console.log(document.getElementById('operate_app'), '=====')
 const render = () => {
   createApp(App)
     .use(store)
+    .use(Antd)
     .use(router)
-    .mount(isQianKun ? "#operate" : "#operate_app");
+    .mount(isQianKun ? "#operate_app" : "#operate_app");
 };
+
+export async function bootstrap(): Promise<void> {
+  console.log('[vue] vue app bootstraped');
+}
 
 export async function mount(props: any): Promise<void> {
   console.log(props);

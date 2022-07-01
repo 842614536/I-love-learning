@@ -4,11 +4,13 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-declare interface MyWindow extends Window{
-  __POWERED_BY_QIANKUN_?: boolean;
-}
 
-let myWindow:MyWindow = window
+declare global {
+  interface Window {
+    __POWERED_BY_QIANKUN__: boolean;
+  }
+}
+const isQianKun = window.__POWERED_BY_QIANKUN__
 
 const initAPP = (container?: HTMLElement) => {
   return ReactDOM.render(
@@ -20,7 +22,7 @@ const initAPP = (container?: HTMLElement) => {
 }
 
 //全局变量来判断环境，独立运行时
-if(!myWindow.__POWERED_BY_QIANKUN_) {
+if(!isQianKun) {
   initAPP()
 }
 

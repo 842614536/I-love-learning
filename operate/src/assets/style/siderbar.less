@@ -1,0 +1,39 @@
+
+/** 左侧菜单相关样式 **/
+.fixed-submenu{
+  position: fixed;
+  z-index: 19;
+  height: 100%;
+  .menu-inner{
+    height:calc(100% - 108px);
+  }
+  .menu-inner::-webkit-scrollbar{
+    width:0
+  }
+  .side-menu-inner{
+    padding-top: 20px;
+  }
+}
+.collapse-button{
+  width:240px;
+  padding:14px 15px;
+  background:#fff;
+  border-top: 1px solid #F1F3F6;
+  position: relative;
+}
+.collapse-button.collapseMenu{
+  width:50px;
+  transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+}
+.ml20.right-content{
+  width: calc(100% - 268px);
+  margin-left:256px !important;
+}
+.ml20.right-content.collapseMenu{
+  width: calc(100% - 80px);
+  margin-left:65px !important;
+}
+.c-menu-vertical.c-menu-dark, .c-menu-vertical.c-menu-light{
+  box-shadow: none;
+}
