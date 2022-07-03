@@ -12,7 +12,8 @@ module.exports = {
     output: {
       library: `operate`, // qiankun_config
       libraryTarget: "umd", // qiankun_config
-      jsonpFunction: `webpackJsonp_operate`, // qiankun_config
+      jsonpFunction: `webpackJsonp_operate`, // qiankun_config webpack4
+      // chunkLoadingGlobal: `webpackJsonp_${packageName}`, // webpack5
     },
   },
 };

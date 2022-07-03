@@ -6,7 +6,7 @@
           <h1 class="issue-title">阅读清单</h1>
         </a-col>
         <a-col span="12" class="issue-add-btn tar">
-          <CreateReading>
+          <CreateReading type="add">
             <a-button type="primary" class="btn current">新增阅读清单</a-button>
           </CreateReading>
         </a-col>
@@ -21,7 +21,7 @@
 </template>
 
 <script setup lang="ts">
-import {ReadingListItem} from './ReadingList'
+import {ReadingListItem} from './ReadingListType'
 import CreateReading from './CreateReading.vue'
   let readingList: Array<ReadingListItem> = [
     {

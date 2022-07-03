@@ -13,7 +13,6 @@ declare global {
   }
 }
 const isQianKun = window.__POWERED_BY_QIANKUN__
-console.log(document.getElementById('operate_app'), '=====')
 const render = () => {
   createApp(App)
     .use(store)

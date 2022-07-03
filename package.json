@@ -7,6 +7,11 @@
     "client": "cd client && npm start",
     "operate": "cd operate && npm start",
     "micro": "cd virgo-micro-app && npm start",
-    "service": "cd service && npm run start:dev"
+    "service": "cd service && npm run start:dev",
+    "install": "concurrently \"npm run clientInstall\" \"npm run operateInstall\" \"npm run microInstall\" \"npm run serviceInstall\"",
+    "clientInstall": "cd client && cnpm i",
+    "operateInstall": "cd operate && cnpm i",
+    "microInstall": "cd virgo-micro-app && cnpm i",
+    "serviceInstall": "cd client && cnpm i"
   }
 }

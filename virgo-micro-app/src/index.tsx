@@ -33,6 +33,7 @@ registerMicroApps(
       entry: "http://lpf.com:3002",
       container: "#operate",
       activeRule: "/operate",
+      props: {}
     }
   ]
 )
