@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-
+import { BrowserRouter as Router } from 'react-router-dom'
 
 declare global {
   interface Window {
@@ -15,7 +15,9 @@ const isQianKun = window.__POWERED_BY_QIANKUN__
 const initAPP = (container?: HTMLElement) => {
   return ReactDOM.render(
     <React.StrictMode>
-      <App />
+      <Router basename="/client">
+        <App />
+      </Router>
     </React.StrictMode>,
     container ? container.querySelector('#root') : document.querySelector('#root')
   )

@@ -1,12 +1,27 @@
-import { Controller, Get } from '@nestjs/common';
+import { Body, Query, Controller, Get, Post } from '@nestjs/common';
 import { ReadingListService } from './reading-list.service';
 
-@Controller()
+@Controller('/operate/reading-list')
 export class ReadingListController {
   constructor(private readonly readingListService: ReadingListService) {}
 
-  @Get()
-  save(): string {
-    return this.readingListService.save();
+  @Post('query')
+  query(@Body() data): any { // todo any 改为 PagingQuery
+    return this.readingListService.query(data);
+  }
+
+  @Post('save')
+  save(@Body() data): any {
+    return this.readingListService.save(data);
+  }
+
+  @Get('delete')
+  delete(@Query() { id }) {
+    return this.readingListService.delete(id)
+  }
+
+  @Post('edit')
+  edit(@Body() data) {
+    return this.readingListService.edit(data)
   }
 }

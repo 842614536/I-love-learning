@@ -1,9 +1,10 @@
 import React, { FC, ReactElement } from "react";
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import "./App.css";
 import { Layout } from "antd";
 import { SiderProps } from "antd/lib/layout";
 import MyMenu from "./components/MyMenu";
+import Home from './pages/Home'
 import io from 'socket.io-client'
 const { Header, Sider, Content } = Layout;
 
@@ -14,6 +15,25 @@ const SiderConfig: SiderProps = {
   theme: "light",
   width: "256px",
 };
+
+let Main: React.FC = () => {
+  return (
+    <Layout>
+      <Header>好看的header</Header>
+      <Layout>
+        <BrowserRouter>
+          <Sider {...SiderConfig}>
+            <MyMenu />
+          </Sider>
+          <Content>
+            <Route path="/client" component={ClientContainer} />
+            <Route path="/operate" component={OperateContainer} />
+          </Content>
+        </BrowserRouter>
+      </Layout>
+    </Layout>
+  )
+}
 
 function App() {
   // const socket = io('http://localhost:8042', {'transports': ['websocket']})
@@ -39,20 +59,10 @@ function App() {
   // })
   return (
     <div className="App">
-      <Layout>
-        <Header>Header</Header>
-        <Layout>
-          <BrowserRouter>
-            <Sider {...SiderConfig}>
-              <MyMenu />
-            </Sider>
-            <Content>
-              <Route path="/client" component={ClientContainer} />
-              <Route path="/operate" component={OperateContainer} />
-            </Content>
-          </BrowserRouter>
-        </Layout>
-      </Layout>
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route path="*" component={Main} />
+      </Switch>
     </div>
   );
 }

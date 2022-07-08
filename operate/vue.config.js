@@ -3,10 +3,17 @@ module.exports = {
     host: "localhost",
     port: 3002,
     open: true,
+    hot: true,
     disableHostCheck: true,
     headers: {
       "Access-Control-Allow-Origin": "*",
     },
+    proxy: {
+      '/operate': {
+        target: 'http://lpf.com:8040',
+        changeOrigin: true
+      },
+    }
   },
   configureWebpack: {
     output: {
@@ -15,5 +22,5 @@ module.exports = {
       jsonpFunction: `webpackJsonp_operate`, // qiankun_config webpack4
       // chunkLoadingGlobal: `webpackJsonp_${packageName}`, // webpack5
     },
-  },
+  }
 };

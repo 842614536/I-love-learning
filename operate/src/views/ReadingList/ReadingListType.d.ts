@@ -1,4 +1,4 @@
-import {TechnologyClassify} from '../../typing/common'
+import {TechnologyClassify} from '@/typing/common'
 import Dayjs from 'dayjs'
 
 export type DialogType = 'add' | 'edit'
@@ -9,6 +9,7 @@ export interface ReadingForm {
   title: string
   description: string
   address: string
+  isDocument: boolean
 }
 
 export interface ReadingListItem extends ReadingForm{

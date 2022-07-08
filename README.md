@@ -4,18 +4,28 @@
 ### 启动(四个项目)
   yarn start
 ### 产品介绍 ###
+    为了学习新技术 以及
     把平时答过的题和一些好的文章汇总到一块，记录详情(下需求中会有详细说明)
+    qa 列表  
+    答题功能
 
 ### 技术栈
 	Ts
 	Qiankun做微前端处理
 	Umi(React+hooks+router+redux)
 	Vue3
-	Node express
+	Node nest.js  读写excel记录数据(excel pwd: ilovelearning)
 
 ### 功能
+
+  1.首页
+      a.常用功能
+      b.图表 (学习进度 学习分类占比等)
+  2.全站搜索功能 
+      a.搜索相关阅读清单里的文章 列表展示 爬虫到主信息
+  3.跳转到github地址 和 issues
 #### 菜单栏
-  1.运营管理 </br>
+  2.运营管理 </br>
   
       a.配置阅读清单
           Title description address
@@ -25,7 +35,7 @@
         answer 答案 String
         rank 级别 enum
         address 
-  2.学习任务 </br>
+  3.学习任务 </br>
   Ⅰ.记录阅读list 
 
       a.table手风琴展开阅读详情
@@ -47,4 +57,5 @@
     答题模式： 随机 按照rank 按照类型
     输入答案 对比答案
     记录历史答案
+  
 

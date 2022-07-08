@@ -123,7 +123,7 @@
 .table-bottom {
   padding: 24px 0 8px 16px;
 
-  .c-btn:not(:first-child) {
+  .ant-btn:not(:first-child) {
     margin-left: 10px;
   }
 }
@@ -134,21 +134,21 @@
   text-align: right;
   border-radius: 8px;
 
-  .c-btn:not(:first-child) {
+  .ant-btn:not(:first-child) {
     margin-left: 10px;
   }
 }
 
 /* 表格边框样式调整 */
-.c-table-wrapper {
+.ant-table-wrapper {
   border: none !important;
   /* 解决IE上table下拉显示不全的问题 */
   overflow: visible !important;
-  &>.c-spin-fix {
+  &>.ant-spin-fix {
     border-right: none !important;
   }
 }
-.c-table:after {
+.ant-table:after {
   width: 0px !important;
 }
 /* 数据统计样式 */
@@ -163,28 +163,28 @@
 }
 
 /* 弹框样式 */
-.modal>.c-modal {  
-  .c-input {
+.modal>.ant-modal {  
+  .ant-input {
     max-width: 350px;
     height: 32px;
   }
 
-  .c-form-item-content {
+  .ant-form-item-content {
     max-width: 350px;
   }
 
   // 查询搜索框
-  .c-input-with-search {
+  .ant-input-with-search {
     max-width: 350px;
     height: 32px;
     position: relative;
 
-    .c-input {
+    .ant-input {
       border-radius: 4px;
     }
 
-    .c-input-search,
-    .c-input-group-append {
+    .ant-input-search,
+    .ant-input-group-append {
       display: inline-block;
       position: absolute;
       right: 0;
@@ -193,20 +193,20 @@
       border: none;
     }
 
-    .c-input-search:before {
+    .ant-input-search:before {
       display: none;
     }
   }
 
-  .c-date-picker .c-input {
+  .ant-date-picker .ant-input {
     max-width: 350px;
   }
 
-  .c-date-picker.date-range .c-input {
+  .ant-date-picker.date-range .ant-input {
     max-width: 350px;
   }
 
-  .c-page {
+  .ant-page {
     padding-top: 20px;
     text-align: right;
   }
@@ -216,7 +216,7 @@
 .select-all {
   padding: 10px 10px 10px 18px;
 
-  .c-checkbox {
+  .ant-checkbox {
     margin-right: 10px;
   }
 }
@@ -304,11 +304,11 @@
 /* 协议弹框 end */
 
 
-.c-tabs {
-  .c-tabs-nav-scrollable {
+.ant-tabs {
+  .ant-tabs-nav-scrollable {
     padding-right: 60px;
   }
-  .c-tabs-nav-prev,.c-tabs-nav-next {
+  .ant-tabs-nav-prev,.ant-tabs-nav-next {
     // display: inline-block;
     width: 26px;
     height: 26px;
@@ -320,26 +320,26 @@
     right: 30px;
     bottom: 6px;
   }
-  .c-tabs-nav-next {
+  .ant-tabs-nav-next {
     right: 0;
   }
 }
 
 // Page插件页码跳转输入框
-.c-page .c-page-options-elevator input {
+.ant-page .ant-page-options-elevator input {
   vertical-align: top;
 }
 
 
 /* table里的checkbox IE兼容问题 */
-.c-table-cell.c-table-cell-with-selection .c-checkbox-checked .c-checkbox-inner::after {
+.ant-table-cell.ant-table-cell-with-selection .ant-checkbox-checked .ant-checkbox-inner::after {
   display: block;
 }
-.c-table-cell .c-table-cell-with-selection .c-checkbox-checked .c-checkbox-inner::after {
+.ant-table-cell .ant-table-cell-with-selection .ant-checkbox-checked .ant-checkbox-inner::after {
   display: block;
 }
 
-.c-table-cell.c-table-cell-with-selection {
+.ant-table-cell.ant-table-cell-with-selection {
   padding-right: 15px;
 }
 /* 金额中文化 */
@@ -368,16 +368,16 @@
   display: inline-block;
 }
 /* 去掉表格表头的全选按钮 */
-.c-table-header{
-  .c-table-cell.c-table-cell-with-selection{
-    .c-checkbox-wrapper{
+.ant-table-header{
+  .ant-table-cell.ant-table-cell-with-selection{
+    .ant-checkbox-wrapper{
       display: none;
     }
   }
 }
 
 // 日期选择控件宽度
-.c-date-picker,.c-date-picker {
+.ant-date-picker,.ant-date-picker {
   width: 100%
 }
 
@@ -445,10 +445,10 @@
   z-index: 1;
 }
 
-.c-80 {
+.ant-80 {
   color: #808080;
 }
-.c-939393 {
+.ant-939393 {
   color: #939393;
 }
 .fs-22 {
@@ -544,13 +544,13 @@
     }
 
     .header-btn + .header-btn,
-    .c-btn + .c-btn {
+    .ant-btn + .ant-btn {
       margin-left: 8px;
     }
   }
 
   // tab 下间距为0, 不显示下边框
-  .c-tabs-bar {
+  .ant-tabs-bar {
     margin-bottom: 0;
     border-bottom: none;
   }
@@ -560,7 +560,7 @@
   background-color: #fff;
   padding: 0px 16px 16px 16px;
   .margin-side(bottom, 16px);
-  .c-divider-horizontal{
+  .ant-divider-horizontal{
     margin: 0 0 13px;
     margin-left:-16px;
     width:calc( 100% + 32px);
@@ -617,7 +617,7 @@
 }
 
 // 表格中的操作按钮
-.c-btn.operate-btn,.c-btn.action-button {
+.ant-btn.operate-btn,.ant-btn.action-button {
   padding: 0 10px !important;
   min-width: 50px !important;
   display: inline-block;
@@ -644,8 +644,8 @@
 }
 
 .bold-table-header {
-  .c-table-fixed-header, .c-table-header {
-    .c-table-cell { // table表头的文字加粗(包括“操作”)
+  .ant-table-fixed-header, .ant-table-header {
+    .ant-table-cell { // table表头的文字加粗(包括“操作”)
       font-weight: bold;
     }
   }
@@ -654,23 +654,23 @@
 *组件库样式重置
 */
 //弹窗title统一加粗
-.c-modal-header-inner{
+.ant-modal-header-inner{
   font-weight: bold;
 }
 
 //重置table行高
-.c-table td{
+.ant-table td{
   padding: 9px 0 8px !important;
 }
 
 //弹窗最高高度控制 570（去掉头底后为470）
-.c-modal-body{
+.ant-modal-body{
   max-height:470px !important;
   overflow-y: auto;
 }
 
 //表格表头加粗
-.c-table-header thead tr th,.c-table-fixed-header thead tr th{
+.ant-table-header thead tr th,.ant-table-fixed-header thead tr th{
   font-weight: bold;
 }
 
@@ -710,7 +710,7 @@
   margin-right: -16px;
   background: #fff;
   box-shadow: 0px -4px 10px 0px rgba(28, 29, 59, 0.02);
-  .c-btn{
+  .ant-btn{
     margin-left:12px;
   }
 }
@@ -718,7 +718,7 @@
 .table-tip {
   height: 58px;
   line-height: 48px;
-  .c-btn:not(:first-child) {
+  .ant-btn:not(:first-child) {
     margin-right: 10px;
   }
   .number {
@@ -739,42 +739,42 @@
 }
 
 .dis-input {
-  ::v-deep .c-input-disabled[disabled] {
+  ::v-deep .ant-input-disabled[disabled] {
     border: none;
     background: #fff !important;
     color:#586175;
   }
-  ::v-deep .c-input-disabled::placeholder {
+  ::v-deep .ant-input-disabled::placeholder {
     opacity: 0;
   }
-  ::v-deep .c-input-disabled:focus{
+  ::v-deep .ant-input-disabled:focus{
     box-shadow:none
   }
 }
 .dis-select {
-  ::v-deep .c-select-selection {
+  ::v-deep .ant-select-selection {
     background: #fff !important;
     color:#586175;
     border: none;
-    .c-select-arrow,
-    .c-select-placeholder {
+    .ant-select-arrow,
+    .ant-select-placeholder {
       display: none;
     }
   }
 }
 .dis-date {
-  ::v-deep .c-input-disabled {
+  ::v-deep .ant-input-disabled {
     border: none;
     background: #fff !important;
     color:#586175;
   }
-  ::v-deep .c-input-suffix {
+  ::v-deep .ant-input-suffix {
     display: none;
   }
-  ::v-deep .c-input-disabled:focus{
+  ::v-deep .ant-input-disabled:focus{
     box-shadow:none
   }
-  ::v-deep .c-input-disabled::placeholder {
+  ::v-deep .ant-input-disabled::placeholder {
     opacity: 0;
   }
 }
@@ -852,15 +852,15 @@
   transition:background-color .3s
 }
 
-.c-table-row:hover .nopass-reason:after,
-.c-table-row-hover .nopass-reason:after{
+.ant-table-row:hover .nopass-reason:after,
+.ant-table-row-hover .nopass-reason:after{
   // 要跟所在背景颜色一致才能遮挡住省略号后觉得没异样
   background-color: #edf2ff;
   transition:background-color .3s
 }
 
 // editable为false的日期样式处理
-.c-date-picker .c-input.c-input-no-border {
+.ant-date-picker .ant-input.ant-input-no-border {
   border: 1px solid #e1e3e6;
   border-radius: 4px;
   &:hover, &:focus {
@@ -873,13 +873,13 @@
 }
 
 //tab组件，选装后文字加粗处理
-.c-tabs-nav .c-tabs-tab-active{
+.ant-tabs-nav .ant-tabs-tab-active{
   font-weight: bold;
 }
 
 
 // 跑马灯分页器样式更改
-.c-carousel-arrow {
+.ant-carousel-arrow {
   width: 44px;
   height: 44px;
   font-size: 20px;
@@ -895,14 +895,14 @@
   &.right {
     right: -8px;
   }
-  & .c-icon {
+  & .ant-icon {
     color: @blue;
   }
 }
-.c-carousel-dots {
+.ant-carousel-dots {
   bottom: -30px;
 }
-.c-carousel-dots li button{
+.ant-carousel-dots li button{
   width: 8px;
   height: 8px;
   border-radius: 50%;
@@ -910,7 +910,7 @@
   opacity: 0.3;
   background: transparent;
 }
-.c-carousel-dots li.c-carousel-active button{
+.ant-carousel-dots li.ant-carousel-active button{
   width: 8px;
   height: 8px;
   border-radius: 50%;
@@ -948,7 +948,7 @@
 }
 
 // 页面中的input 后面有按钮 按钮disabled时的样式
-.disabled-button-append .c-input-group-append {
+.disabled-button-append .ant-input-group-append {
   color: #c5cad4 !important;
   background-color: #f1f3f6 !important;
 }
@@ -958,7 +958,7 @@
   .tar;
   height: 45px;
   line-height: 45px;
-  .c-btn {
+  .ant-btn {
     z-index: 2;
     position: relative;
   }
@@ -1000,7 +1000,7 @@
 
 /******* 按钮 *********/
 .btn,
-.btn.c-btn{
+.btn.ant-btn{
   display: inline-block;
   width: @108;
   height: @36;
@@ -1040,20 +1040,20 @@
     border-color: #dcdee2;
   }
 
-  &.c-btn-large{
+  &.ant-btn-large{
     width: @160;
     height: @44;
     line-height: @44;
     .font-size(16px);
   }
 
-  &.c-btn-primary{
+  &.ant-btn-primary{
     width: @108;
     height: @36;
     line-height: @36;
   }
 
-  &.c-btn-small{
+  &.ant-btn-small{
     width: @48;
     height: @30;
     line-height: @30;
@@ -1086,4 +1086,8 @@
 .select{
   width: @165;
   height: @36;
+}
+
+.ant-pagination{
+  text-align: right;
 }

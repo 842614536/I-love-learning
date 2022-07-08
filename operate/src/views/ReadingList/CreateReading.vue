@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <span>
     <span @click="toggleShow()">
       <slot></slot>
     </span>
@@ -8,7 +8,7 @@
       :maskClosable="false"
       v-model:visible="isShow"
       :title="title"
-      :confirm-loading="submtting"
+      :confirm-loading="submitting"
       @ok="handleOk"
     >
       <a-form
@@ -47,28 +47,46 @@
         >
           <a-input v-model:value="formState.address" />
         </a-form-item>
+        <a-form-item
+          label="官方文档"
+          name="isDocument"
+          v-bind="validateInfos.isDocument"
+        >
+          <a-radio-group v-model:value="formState.isDocument">
+            <a-radio :value="true">是</a-radio>
+            <a-radio :value="false">否</a-radio>
+          </a-radio-group>
+        </a-form-item>
       </a-form>
     </a-modal>
-  </div>
+  </span>
 </template>
 
 <script setup lang="ts">
 import { ref, reactive, toRaw, defineProps } from 'vue'
 import {ReadingForm} from './ReadingListType'
 import { useForm } from 'ant-design-vue/lib/form'
-import {saveReadingList} from '@/api/readingListApi'
-
-  export interface CreateReadingProps {
-    type: 'add' | 'edit'
+import {saveReadingList, editReadingList} from '@/api/readingListApi'
+import { message } from 'ant-design-vue'
+  interface CreateReadingProps {
+    readonly type: 'add' | 'edit'
+    query(): void,
+    detail?: ReadingForm
   }
+
   const props = defineProps<CreateReadingProps>()
 
   const title = ref<string>('');
   const isShow = ref<boolean>(false);
-  const submtting = ref<boolean>(false);
+  const submitting = ref<boolean>(false);
 
-  // lpf 把技术栈类型放到主应用 通过props传进来
-  const classifyOptions = ['react', 'vue', 'git', 'ts'].map(v => {
+  enum TypeEnum {
+    add = '新增',
+    edit = '修改'
+  }
+
+  // todo 把技术栈类型放到主应用 通过props传进来
+  const classifyOptions = ['react', 'vue', 'git', 'ts', 'FE', 'Micro-Frontends', 'socket'].map(v => {
     return {
       label: v,
       value: v
@@ -81,19 +99,30 @@ import {saveReadingList} from '@/api/readingListApi'
     title: [{ required: true, message: 'Please input title!' }],
     description: [{ required: true, message: 'Please input description!' }],
     address: [{ required: true, message: 'Please input address!' }],
+    isDocument: [{ required: true }]
   })
 
   // 表单数据
-  const formState = reactive<ReadingForm>({
+  const initFormState: ReadingForm = {
     classify: '',
     title: '',
     description: '',
-    address: ''
+    address: '',
+    isDocument: false
+  }
+  const formState = reactive<ReadingForm>({
+    ...initFormState
+  })
+
+  const {resetFields, validate, validateInfos} = useForm(formState, formRule, {
+    // onValidate: (...args) => console.log(...args)
   })
 
   const toggleShow = () => {
     isShow.value = !isShow.value
     if (isShow.value) {
+      Object.assign(formState, props.detail || {...initFormState})
+      resetFields()
       title.value = props.type ? {
         add: '新增阅读清单',
         edit: '修复阅读清单'
@@ -101,17 +130,25 @@ import {saveReadingList} from '@/api/readingListApi'
     }
   }
 
-  const {resetFields, validate, validateInfos} = useForm(formState, formRule, {
-    // onValidate: (...args) => console.log(...args)
-  })
-
   const handleOk = () => {
-    submtting.value = true;
-    validate().then(data => {
-      console.log(data)
-      saveReadingList(data)
+    validate().then(async () => {
+      let data = toRaw(formState)
+      submitting.value = true;
+      let res: any
+      if (props.type === 'add') {
+        res = await saveReadingList(data)
+      } else {
+        res = await editReadingList(data)
+      }
+      submitting.value = false
+      if (res.code === '0') {
+        message.success('添加成功')
+        props.query()
+        toggleShow()
+      } else {
+        message.error(res.message)
+      }
     })
-    // toRaw(formState)
   }
 
 </script>
