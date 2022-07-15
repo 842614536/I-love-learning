@@ -6,6 +6,8 @@ import { SiderProps } from "antd/lib/layout";
 import MyMenu from "./components/MyMenu";
 import Home from './pages/Home'
 import io from 'socket.io-client'
+import { useDispatch } from 'react-redux'
+import GlobalSearch from './components/GlobalSearch'
 const { Header, Sider, Content } = Layout;
 
 const ClientContainer: FC = (): ReactElement => <div id="client"></div>
@@ -57,8 +59,20 @@ function App() {
   // socket.on('message', (data: any) => {
   //   console.log(data)
   // })
+  const dispatch = useDispatch()
+  document.addEventListener('keydown', (e) => {
+    let ctrlKey = e.ctrlKey || e.metaKey;
+    if (ctrlKey && e.keyCode === 75) {
+      dispatch({
+        type: 'TOGGLESHOWGLOBALDIALOG',
+        payload: true
+      })
+    }
+  }, false)
+
   return (
     <div className="App">
+      <GlobalSearch />
       <Switch>
         <Route exact path="/" component={Home} />
         <Route path="*" component={Main} />

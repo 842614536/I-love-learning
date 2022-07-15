@@ -10,7 +10,7 @@ const paths = require('./paths');
 const getHttpsConfig = require('./getHttpsConfig');
 
 // todo 设置process.env.HOST
-const host = process.env.HOST || 'lpf.com';
+const host = process.env.HOST || 'localhost';
 const sockHost = process.env.WDS_SOCKET_HOST;
 const sockPath = process.env.WDS_SOCKET_PATH; // default: '/sockjs-node'
 const sockPort = process.env.WDS_SOCKET_PORT;
