@@ -1,5 +1,4 @@
-import {ref, toRaw, reactive} from 'vue'
-
+import { ref, toRaw, reactive } from 'vue'
 
 const useQueryMixin = (getTableList: (data: any) => Promise<any>) => {
   const dataList = ref([])
@@ -28,7 +27,7 @@ const useQueryMixin = (getTableList: (data: any) => Promise<any>) => {
     })
   }
 
-  const setPageCond =  (page: number, pageSize: number) => {
+  const setPageCond = (page: number, pageSize: number) => {
     Object.assign(pageCond, {
       page,
       pageSize

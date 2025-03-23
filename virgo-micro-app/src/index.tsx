@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './assets/style/reset.less'
 import './assets/style/index.less'
+import './assets/themes/index.scss';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
@@ -31,13 +32,13 @@ registerMicroApps(
   [
     {
       name: 'client',
-      entry: 'http://lpf.com:3001',
+      entry: 'http://12.0.215.59:3001',
       container: '#client',
       activeRule: '/client'
     },
     {
       name: "operate",
-      entry: "http://lpf.com:3002",
+      entry: "http://12.0.215.59:3002",
       container: "#operate",
       activeRule: "/operate",
       props: {}
@@ -45,7 +46,12 @@ registerMicroApps(
   ]
 )
 
-start()
+start({
+  sandbox: {
+    // strictStyleIsolation: true,
+    experimentalStyleIsolation: true
+  }
+})
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

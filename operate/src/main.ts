@@ -26,7 +26,7 @@ export async function bootstrap(): Promise<void> {
 }
 
 export async function mount(props: any): Promise<void> {
-  console.log(props);
+  console.log(props, '5555');
   render();
 }
 

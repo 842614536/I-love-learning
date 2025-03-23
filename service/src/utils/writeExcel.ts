@@ -13,7 +13,6 @@ export default (fileName, data, isRewrite?: Boolean) =>{
     exceldata[0].data = data
   } else {
     exceldata = xlsx.parse(excelPath)
-    console.log(data, '=====')
     exceldata[0].data.splice(1, 0, data)
   }
   /** 构建数据流 */

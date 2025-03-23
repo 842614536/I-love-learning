@@ -1,12 +1,22 @@
-import { Body, Query, Controller, Get, Post } from '@nestjs/common';
+import { Body, Query, Controller, Get, Post, Headers, Req } from '@nestjs/common';
 import { ReadingListService } from './reading-list.service';
+import { IsNotEmpty } from 'class-validator';
+
+class Data {
+  // @IsNotEmpty()
+  a: string
+  parameter: string
+  pageCond: {
+    page: number
+  }
+}
 
 @Controller('/operate/reading-list')
 export class ReadingListController {
   constructor(private readonly readingListService: ReadingListService) {}
 
   @Post('query')
-  query(@Body() data): any { // todo any 改为 PagingQuery
+  query(@Body() data: Data, @Headers() headers: any, @Req() request: any): any { // todo any 改为 PagingQuery
     return this.readingListService.query(data);
   }
 

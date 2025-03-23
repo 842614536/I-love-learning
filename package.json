@@ -13,5 +13,9 @@
     "operateInstall": "cd operate && cnpm i",
     "microInstall": "cd virgo-micro-app && cnpm i",
     "serviceInstall": "cd client && cnpm i"
+  },
+  "dependencies": {
+    "request-ip": "^3.3.0",
+    "ws": "^8.18.0"
   }
 }

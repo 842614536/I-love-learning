@@ -1,0 +1,29 @@
+.my-content-container {
+  padding: 20px 150px;
+  overflow: auto;
+  transition: height .3s;
+  .my-content-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    .my-content-question {
+      display: flex;
+      border-radius: 8px;
+      background-color: #414258;
+      padding: 10px;
+      width: max-content;
+      margin-bottom: 40px;
+      max-width: 60%;
+    }
+    .my-content-answer {
+      margin-bottom: 40px;
+      align-self: flex-start;
+      position: relative;
+      .logo {
+        position: absolute;
+        top: -5px;
+        left: -50px;
+      }
+    }
+  }
+}

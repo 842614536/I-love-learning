@@ -38,7 +38,6 @@ export class ReadingListService {
     let updateTime = data.id ? nowDate : '--'
     // 依次: id 创建时间 更新时间 阅读记录
     let transformData = [id, createTime, updateTime, [], ...category.map(v => data[v])]
-    console.log(transformData)
     writeExcel('reading-list.xlsx', transformData)
     return {
       code: '0',

@@ -1,0 +1,45 @@
+{
+  "name": "caocao",
+  "version": "1.0.0",
+  "description": "曹操ai",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "rsbuild build",
+    "check": "biome check --write",
+    "dev": "rsbuild dev --open",
+    "format": "biome format --write",
+    "preview": "rsbuild preview",
+    "start": "rsbuild dev"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "@mui/icons-material": "^6.4.7",
+    "@mui/material": "^6.4.7",
+    "github-markdown-css": "^5.8.1",
+    "highlight.js": "^11.11.1",
+    "install": "^0.13.0",
+    "katex": "^0.16.21",
+    "npm": "^11.2.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-markdown": "^10.1.0",
+    "recoil": "^0.7.7",
+    "rehype-highlight": "^7.0.2",
+    "rehype-katex": "^7.0.1",
+    "rehype-raw": "^7.0.0",
+    "remark-footnotes": "^5.0.0",
+    "remark-gfm": "^4.0.1"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.9.4",
+    "@rsbuild/core": "^1.2.16",
+    "@rsbuild/plugin-less": "^1.1.1",
+    "@rsbuild/plugin-react": "^1.1.1",
+    "@rsbuild/plugin-umd": "^1.0.4",
+    "@types/react": "^18.2.55",
+    "@types/react-dom": "^18.2.19",
+    "typescript": "^5.8.2"
+  }
+}

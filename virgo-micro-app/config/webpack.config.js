@@ -26,6 +26,8 @@ const ModuleNotFoundPlugin = require('react-dev-utils/ModuleNotFoundPlugin');
 const ForkTsCheckerWebpackPlugin = require('react-dev-utils/ForkTsCheckerWebpackPlugin');
 const typescriptFormatter = require('react-dev-utils/typescriptFormatter');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const HtmlWebpackHandleCssInjectPlugin = require('./HtmlWebpackHandleCssInjectPlugin');
 
 const postcssNormalize = require('postcss-normalize');
 
@@ -76,6 +78,29 @@ const hasJsxRuntime = (() => {
     return false;
   }
 })();
+
+const THEME_PATH = './src/assets/themes';
+const extractScss = new ExtractTextPlugin('style.[hash].css');
+const styleLoaders = [{ loader: 'css-loader' }, { loader: 'Scss-loader' }];
+
+const resolveToThemeStaticPath = fileName => path.resolve(THEME_PATH, fileName);
+const themeFileNameSet = fs.readdirSync(path.resolve(THEME_PATH));
+const themePaths = themeFileNameSet.map(resolveToThemeStaticPath);
+const getThemeName = fileName => `theme-${path.basename(fileName, path.extname(fileName))}`;
+
+// 全部 ExtractScssS 的集合
+const themesExtractScssSet = themeFileNameSet.map(fileName => new ExtractTextPlugin(`${getThemeName(fileName)}.css`))
+// 主题 Loader 的集合
+const themeLoaderSet = themeFileNameSet.map((fileName, index) => {
+  return {
+    test: /\.(Scss|css)$/,
+    include: resolveToThemeStaticPath(fileName),
+    loader: themesExtractScssSet[index].extract({
+      use: styleLoaders
+    })
+  }
+})
+
 
 // This is the production and development configuration.
 // It is focused on developer experience, fast rebuilds, and a minimal bundle.
@@ -202,13 +227,13 @@ module.exports = function (webpackEnv) {
       // There will be one main bundle, and one file per asynchronous chunk.
       // In development, it does not produce real files.
       filename: isEnvProduction
-        ? 'static/js/[name].[contenthash:8].js'
+        ? 'static/js/[name].[chunkhash:8].js'
         : isEnvDevelopment && 'static/js/bundle.js',
       // TODO: remove this when upgrading to webpack 5
       futureEmitAssets: true,
       // There are also additional JS chunk files if you use code splitting.
       chunkFilename: isEnvProduction
-        ? 'static/js/[name].[contenthash:8].chunk.js'
+        ? 'static/js/[name].[chunkhash:8].chunk.js'
         : isEnvDevelopment && 'static/js/[name].chunk.js',
       // webpack uses `publicPath` to determine where the app is being served from.
       // It requires a trailing slash, or the file assets will get an incorrect path.
@@ -536,6 +561,16 @@ module.exports = function (webpackEnv) {
                 'sass-loader'
               ),
             },
+            {
+              test: /\.(Scss|css)$/,
+              exclude: themePaths,
+              loader: extractScss.extract({
+                use: styleLoaders,
+                // use style-loader in development
+                fallback: 'style-loader?{attrs:{prop: "value"}}'
+              })
+            },
+            ...themeLoaderSet,
             // "file" loader makes sure those assets get served by WebpackDevServer.
             // When you `import` an asset, you get its (virtual) filename.
             // In production, they would get copied to the `build` folder.
@@ -559,6 +594,7 @@ module.exports = function (webpackEnv) {
       ],
     },
     plugins: [
+      ...themesExtractScssSet,
       // Generates an `index.html` file with the <script> injected.
       new HtmlWebpackPlugin(
         Object.assign(
@@ -585,6 +621,11 @@ module.exports = function (webpackEnv) {
             : undefined
         )
       ),
+      new HtmlWebpackHandleCssInjectPlugin({
+        filter: (filePath) => {
+          return filePath.includes('themes');
+        }
+      }),
       // Inlines the webpack runtime script. This script is too small to warrant
       // a network request.
       // https://github.com/facebook/create-react-app/issues/5358
@@ -637,8 +678,8 @@ module.exports = function (webpackEnv) {
         new MiniCssExtractPlugin({
           // Options similar to the same options in webpackOptions.output
           // both options are optional
-          filename: 'static/css/[name].[contenthash:8].css',
-          chunkFilename: 'static/css/[name].[contenthash:8].chunk.css',
+          filename: 'static/css/[name].[chunkhash:8].css',
+          chunkFilename: 'static/css/[name].[chunkhash:8].chunk.css',
         }),
       // Generate an asset manifest file with the following content:
       // - "files" key: Mapping of all asset filenames to their corresponding

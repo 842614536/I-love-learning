@@ -4,8 +4,7 @@ import "./App.css";
 import { Layout } from "antd";
 import { SiderProps } from "antd/lib/layout";
 import MyMenu from "./components/MyMenu";
-import Home from './pages/Home'
-import io from 'socket.io-client'
+// import io from 'socket.io-client'
 import { useDispatch } from 'react-redux'
 import GlobalSearch from './components/GlobalSearch'
 const { Header, Sider, Content } = Layout;
@@ -74,8 +73,7 @@ function App() {
     <div className="App">
       <GlobalSearch />
       <Switch>
-        <Route exact path="/" component={Home} />
-        <Route path="*" component={Main} />
+        <Route path="/" component={Main} />
       </Switch>
     </div>
   );
